@@ -1,0 +1,9 @@
+@ - An ERC721 NFT smart contract 
+@ - A Sale smart contract that will be used by users to mint new NFTs.
+- The Sale contract should support presale to whitelist addresses, as well as, open public sale
+@ - It should mint random NFTs to avoid front-running and make the distribution fair
+- It should utilize a VRF randomization oracle such as Chainlink
+- A web-based dApp that will allow users interact with the smart contracts on the blockchain
+@ - Uploading the art and metadata files on a decentralized network
+
+@: Can do now
