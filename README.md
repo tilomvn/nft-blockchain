@@ -31,6 +31,7 @@
         "photographer" : "Adebola Adeniran"
     }
 ```
+* Install axios to fetch metadata when minting: npm i axios
 * Install Alchemy Web3: npm install @alch/alchemy-web3
 * Create scripts to mint NFTs: in scripts folder, create a file called mint-nft.js(see source in project)
 * Mint: node scripts/mint-nft.js
