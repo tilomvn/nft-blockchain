@@ -1,0 +1,102 @@
+require('dotenv').config();
+const axios = require('axios');
+const InputDataDecoder = require('ethereum-input-data-decoder');
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+const METAMASK_PUBLIC_KEY = process.env.METAMASK_PUBLIC_KEY_CHROME;
+const METAMASK_PRIVATE_KEY = process.env.METAMASK_PRIVATE_KEY_CHROME;
+const API_URL = process.env.API_URL;
+
+function getArgs () {
+  const args = {};
+  process.argv
+      .slice(2, process.argv.length)
+      .forEach(arg => {
+      // long arg
+      if (arg.slice(0,2) === '--') {
+          const longArg = arg.split('=');
+          const longArgFlag = longArg[0].slice(2,longArg[0].length);
+          const longArgValue = longArg.length > 1 ? longArg[1] : true;
+          args[longArgFlag] = longArgValue;
+      }
+      // flags
+      else if (arg[0] === '-') {
+          const flags = arg.slice(1,arg.length).split('');
+          flags.forEach(flag => {
+          args[flag] = true;
+          });
+      }
+  });
+  console.log("Input agrs:");
+  console.log(args);
+  return args;
+}
+
+async function mintNFT() {
+  const args = getArgs();
+  
+  const alchemyWeb3 = createAlchemyWeb3(API_URL);
+  const contract = require("../artifacts/contracts/" + args.contract + ".sol/" + args.contract + ".json" );
+  const contractAddress = args.contractAddress;
+  const receiver = args.receiver;
+  const nftContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
+  const tokenURI = args.tokenUri;
+  const nftFee = args.nftFee;
+
+  // get the nonce - nonce is needed for security reasons. It keeps track of the number of
+  // transactions sent from our address and prevents replay attacks.
+  const nonce = await alchemyWeb3.eth.getTransactionCount(METAMASK_PUBLIC_KEY, 'latest');
+  const tx = {
+    from: METAMASK_PUBLIC_KEY, // our MetaMask public key
+    to: contractAddress, // the smart contract address we want to interact with
+    nonce: nonce, // nonce with the no of transactions from our account
+    gas: 1000000, // fee estimate to complete the transaction
+    value: nftFee, // amount to be transfered to contract address
+    data: nftContract.methods
+      .createPubFeeNFT(receiver, tokenURI)
+      .encodeABI(), // call the mintNFTContract function from our NFT.sol file and pass the account that should receive the minted NFT.
+  };
+
+  const signPromise = alchemyWeb3.eth.accounts.signTransaction(
+    tx,
+    METAMASK_PRIVATE_KEY
+  );
+  signPromise
+    .then((signedTx) => {
+      alchemyWeb3.eth.sendSignedTransaction(
+        signedTx.rawTransaction,
+        function (err, hash) {
+          if (!err) {
+            console.log("The hash of our transaction is: ", hash, "\nCheck Alchemy's Mempool to view the status of our transaction!");
+            axios({
+              method: 'post',
+              url: API_URL,
+              data: {
+                jsonrpc: "2.0",
+                method: "eth_getTransactionByHash",
+                params: [hash],
+                id: 0
+              }
+            })
+            .then((response) => {
+              console.log("Transaction Result:");
+              console.log(response.data.result);
+
+              console.log("Transaction Metadata:");
+              const decoder = new InputDataDecoder(contract.abi);
+              console.log(decoder.decodeData(response.data.result.input));
+            })
+            .catch((error) => console.log(error));
+          } else {
+            console.log("Something went wrong when submitting our transaction:", err);
+          }
+        }
+      );
+    })
+    .catch((err) => {
+      console.log("Promise failed:", err);
+      process.exit(1);
+    });
+}
+
+mintNFT();

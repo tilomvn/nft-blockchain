@@ -36,3 +36,6 @@
 * Create scripts to mint NFTs: in scripts folder, create a file called mint-nft.js(see source in project)
 * Mint: node scripts/mint-nft.js
 * Can see transaction on https://dashboard.alchemyapi.io/mempool
+## 5. Customize Mint Cmd Sample
+* node scripts/mint.js --contract=PubFeeArtNFTs --contractAddress=0x5436d22456BD08c4416ED2966bEa424572f9Ab42 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --tokenUri=https://ipfs.io/ipfs/QmYgHzTcUBEpTu2aHMXA9vFLPUR951Q9KCKuiW97baFS4x --nftFee=100000000
+* For nftFee, set 0 if the contract does not support payable
