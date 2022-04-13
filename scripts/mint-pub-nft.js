@@ -47,7 +47,8 @@ async function mintNFT(tokenURI) {
                 params: [hash],
                 id: 0
               }
-            }).then((response) => {
+            })
+            .then((response) => {
               console.log("Transaction Result:");
               console.log(response.data.result);
 
@@ -55,7 +56,7 @@ async function mintNFT(tokenURI) {
               const decoder = new InputDataDecoder(contract.abi);
               console.log(decoder.decodeData(response.data.result.input));
             })
-              .catch((error) => console.log(error));
+            .catch((error) => console.log(error));
           } else {
             console.log("Something went wrong when submitting our transaction:", err);
           }

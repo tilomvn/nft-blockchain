@@ -1,9 +1,19 @@
+Requirements: Mask @ means can do
 @ - An ERC721 NFT smart contract 
 @ - A Sale smart contract that will be used by users to mint new NFTs.
-- The Sale contract should support presale to whitelist addresses, as well as, open public sale
+  - The Sale contract should support presale to whitelist addresses, as well as, open public sale
 @ - It should mint random NFTs to avoid front-running and make the distribution fair
-- It should utilize a VRF randomization oracle such as Chainlink
-- A web-based dApp that will allow users interact with the smart contracts on the blockchain
+@ - It should utilize a VRF randomization oracle such as Chainlink - Now using Alchemy under Eth network
+  - A web-based dApp that will allow users interact with the smart contracts on the blockchain
 @ - Uploading the art and metadata files on a decentralized network
 
-@: Can do now
+BE Update:
+1. Using Eth network components
+2. Can deploy new contract
+3. Can mint
+4. Can get metadata which on decentralized network through transaction
+5. Can do apply charge fee of NFT
+6. Using MetaMask for use to bacis interact with NFT contract
+
+FE Update
+None
