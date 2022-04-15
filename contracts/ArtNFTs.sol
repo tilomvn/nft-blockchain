@@ -11,9 +11,10 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
+    uint256 public nftPerAddressLimit = 2;
     string public baseURI;
     bool public isPublicToWhiteListed = true;
-    address[] public whitelisted;
+    address[] public whitelisted = [address(0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3)];
 
     constructor(
       string memory _name,
@@ -23,13 +24,17 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
         baseURI = _baseURI;
     }
 
-    function mintNFTContract(address receiver, string memory tokenURI) public payable returns (uint256) {
+    function mintNFTContract(string memory tokenURI) public payable returns (uint256) {
+        //msg.sender : address of receiver who receives NFT and address of sender who sends nft fee to contract address
         if (isPublicToWhiteListed) {
-            require(isInWhiteListed(receiver), "Not In WhiteListed For PreSale");
+            require(isInWhiteListed(msg.sender), "Not In WhiteListed For PreSale");
         }
+        uint256 receiverTokenCount = balanceOf(msg.sender);
+        require(receiverTokenCount < nftPerAddressLimit, "Receiver reached limit(2) ArtNFTs");
+
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
-        _mint(receiver, newItemId);
+        _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
     }
@@ -43,11 +48,11 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
         return false;
     }
 
-    function setPublicToWhiteListed(bool _state) public {
+    function setPublicToWhiteListed(bool _state) public onlyOwner {
         isPublicToWhiteListed = _state;
     }
 
-    function setWhiteListed(address[] calldata _users) public {
+    function setWhiteListed(address[] calldata _users) public onlyOwner {
         delete whitelisted;
         whitelisted = _users;
     }
