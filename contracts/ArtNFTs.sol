@@ -1,37 +1,54 @@
-//Contract based on https://docs.openzeppelin.com/contracts/3.x/erc721
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 // implements the ERC721 standard
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-// keeps track of the number of tokens issued
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// Accessing the Ownable method ensures that only the creator of the smart contract can interact with it
 contract ArtNFTs is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    // the name and symbol for the NFT
-    constructor() public ERC721("ArtNFTs", "RADX") {}
+    string public baseURI;
+    bool public isPublicToWhiteListed = true;
+    address[] public whitelisted;
 
-    // Create a function to mint/create the NFT
-    // receiver takes a type of address. This is the wallet address of the user that should receive the NFT minted using the smart contract
-    // tokenURI takes a string that contains metadata about the NFT
+    constructor(
+      string memory _name,
+      string memory _symbol,
+      string memory _baseURI
+    ) public ERC721(_name, _symbol) {
+        baseURI = _baseURI;
+    }
 
-    function mintNFTContract(address receiver, string memory tokenURI)
-        public onlyOwner
-        returns (uint256)
-    {
+    function mintNFTContract(address receiver, string memory tokenURI) public payable returns (uint256) {
+        if (isPublicToWhiteListed) {
+            require(isInWhiteListed(receiver), "Not In WhiteListed For PreSale");
+        }
         _tokenIds.increment();
-
         uint256 newItemId = _tokenIds.current();
         _mint(receiver, newItemId);
         _setTokenURI(newItemId, tokenURI);
-
-        // returns the id for the newly created token
         return newItemId;
+    }
+
+    function isInWhiteListed(address _user) private view returns (bool) {
+        for(uint256 i = 0; i < whitelisted.length; i++) {
+            if (whitelisted[i] == _user) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function setPublicToWhiteListed(bool _state) public {
+        isPublicToWhiteListed = _state;
+    }
+
+    function setWhiteListed(address[] calldata _users) public {
+        delete whitelisted;
+        whitelisted = _users;
     }
 }

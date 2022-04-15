@@ -11,7 +11,7 @@ const web3 = createAlchemyWeb3(
 );
 
 async function getMetadata() {
-    const metadata = await web3.alchemy.getTokenMetadata("0xA8Bb653775B1Fb910E18d6a64c0C2d91aFe72B4B");
+    const metadata = await web3.alchemy.getTokenMetadata("0xe909c0f9c9b00fc72689ea31bffeaa831bc2e7aa");
     console.log("TOKEN METADATA->");
     console.log(metadata);
 }

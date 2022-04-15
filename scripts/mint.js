@@ -12,21 +12,21 @@ function getArgs () {
   process.argv
       .slice(2, process.argv.length)
       .forEach(arg => {
-      // long arg
-      if (arg.slice(0,2) === '--') {
-          const longArg = arg.split('=');
-          const longArgFlag = longArg[0].slice(2,longArg[0].length);
-          const longArgValue = longArg.length > 1 ? longArg[1] : true;
-          args[longArgFlag] = longArgValue;
-      }
-      // flags
-      else if (arg[0] === '-') {
-          const flags = arg.slice(1,arg.length).split('');
-          flags.forEach(flag => {
-          args[flag] = true;
-          });
-      }
-  });
+          // long arg
+          if (arg.slice(0,2) === '--') {
+              const longArg = arg.split('=');
+              const longArgFlag = longArg[0].slice(2,longArg[0].length);
+              const longArgValue = longArg.length > 1 ? longArg[1] : true;
+              args[longArgFlag] = longArgValue;
+          }
+          // flags
+          else if (arg[0] === '-') {
+              const flags = arg.slice(1,arg.length).split('');
+              flags.forEach(flag => {
+              args[flag] = true;
+              });
+          }
+      });
   console.log("Input agrs:");
   console.log(args);
   return args;
@@ -53,7 +53,7 @@ async function mintNFT() {
     gas: 1000000, // fee estimate to complete the transaction
     value: nftFee, // amount to be transfered to contract address
     data: nftContract.methods
-      .createPubFeeNFT(receiver, tokenURI)
+      .mintNFTContract(receiver, tokenURI)
       .encodeABI(), // call the mintNFTContract function from our NFT.sol file and pass the account that should receive the minted NFT.
   };
 

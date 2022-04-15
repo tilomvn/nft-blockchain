@@ -1,3 +1,4 @@
+
 async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
@@ -6,7 +7,7 @@ async function main() {
     const RADX = await ethers.getContractFactory("ArtNFTs");
 
     // Start deployment, returning a promise that resolves to a contract object
-    const radx = await RADX.deploy();
+    const radx = await RADX.deploy("ArtNFT", "RADX", "http://abc.vcom/");
     console.log("Contract deployed to address:", radx.address);
  }
 
