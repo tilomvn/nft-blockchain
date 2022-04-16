@@ -37,6 +37,6 @@
 * Mint: node scripts/mint-nft.js
 * Can see transaction on https://dashboard.alchemyapi.io/mempool
 ## 5. Customize Mint Cmd Sample
-* node scripts/mint.js --contract=ArtNFTs --contractAddress=0x89665Eb1D4c2104a46a1A5780eD7DFb72C9ae938 --receiver=0x80D422366B4c9216e72C054036d59eDEf47E124E --receiverKey=02343c7018f9a5446763e635efc6df7be6f8f6f7972441f9d76d7b0df30b8989 --tokenUri=https://ipfs.io/ipfs/QmYgHzTcUBEpTu2aHMXA9vFLPUR951Q9KCKuiW97baFS4x --nftFee=100000000
-* node scripts/mint.js --contract=ArtNFTs --contractAddress=0x89665Eb1D4c2104a46a1A5780eD7DFb72C9ae938 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --receiverKey=2f3bfcc7d0b936159c373d642d947926363030e6c500285c593bb01bd002191c --tokenUri=https://ipfs.io/ipfs/QmYgHzTcUBEpTu2aHMXA9vFLPUR951Q9KCKuiW97baFS4x --nftFee=100000000
+* node scripts/mint.js --contract=ArtNFTs --contractAddress=0x89665Eb1D4c2104a46a1A5780eD7DFb72C9ae938 --receiver=0x80D422366B4c9216e72C054036d59eDEf47E124E --receiverKey=02343c7018f9a5446763e635efc6df7be6f8f6f7972441f9d76d7b0df30b8989 --tokenUri=https://ipfs.io/ipfs/QmYgHzTcUBEpTu2aHMXA9vFLPUR951Q9KCKuiW97baFS4x --nftFee=100000000 --gas=1000000
+* node scripts/mint.js --contract=ArtNFTs --contractAddress=0x89665Eb1D4c2104a46a1A5780eD7DFb72C9ae938 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --receiverKey=2f3bfcc7d0b936159c373d642d947926363030e6c500285c593bb01bd002191c --tokenUri=https://ipfs.io/ipfs/QmYgHzTcUBEpTu2aHMXA9vFLPUR951Q9KCKuiW97baFS4x --nftFee=100000000 --gas=1000000
 * For nftFee, set 0 if the contract does not support payable

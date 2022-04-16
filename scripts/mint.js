@@ -20,9 +20,7 @@ function getArgs () {
           // flags
           else if (arg[0] === '-') {
               const flags = arg.slice(1,arg.length).split('');
-              flags.forEach(flag => {
-              args[flag] = true;
-              });
+              flags.forEach(flag => { args[flag] = true; });
           }
       });
   console.log("Input agrs:");
@@ -41,6 +39,7 @@ async function mintNFT() {
   const nftContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
   const tokenURI = args.tokenUri;
   const nftFee = args.nftFee;
+  const gas = args.gas;
 
   // get the nonce - nonce is needed for security reasons. It keeps track of the number of
   // transactions sent from our address and prevents replay attacks.
@@ -49,7 +48,7 @@ async function mintNFT() {
     from: receiver, // our MetaMask public key
     to: contractAddress, // the smart contract address we want to interact with
     nonce: nonce, // nonce with the no of transactions from our account
-    gas: 1000000, // fee estimate to complete the transaction
+    gas: gas, // fee estimate to complete the transaction
     value: nftFee, // amount to be transfered to contract address
     data: nftContract.methods
       .mintNFTContract(tokenURI)
