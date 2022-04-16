@@ -60,8 +60,8 @@ async function mintNFT() {
     receiverKey
   );
   signPromise
-    .then((signedTx) => {
-      alchemyWeb3.eth.sendSignedTransaction(
+    .then(signedTx => {
+      const signPromiseEvent = alchemyWeb3.eth.sendSignedTransaction(
         signedTx.rawTransaction,
         function (err, hash) {
           if (!err) {
@@ -84,12 +84,20 @@ async function mintNFT() {
               const decoder = new InputDataDecoder(contract.abi);
               console.log(decoder.decodeData(response.data.result.input));
             })
-            .catch((error) => console.log(error));
+            .catch((error) => { 
+              console.log("Get Transaction Info Failed: ", error);
+            });
           } else {
             console.log("Something went wrong when submitting our transaction:", err);
           }
         }
       );
+      signPromiseEvent.then((tranReceipt) => {
+        console.log("Transaction Receipt: ", tranReceipt);
+      }).catch((err) => {
+        console.log("Failed Transaction Receipt: ", err.receipt);
+        process.exit(1);
+      });
     })
     .catch((err) => {
       console.log("Promise failed:", err);
