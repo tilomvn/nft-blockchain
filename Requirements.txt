@@ -8,13 +8,20 @@ Requirements: Mask @ means can do
 @ - Uploading the art and metadata files on a decentralized network
 
 BE Update: Mask @ means ready
-@ 1. Using Eth network components
-@ 2. Can deploy new contract
-@ 3. Can mint
-@ 4. Can get metadata which on decentralized network through transaction
-@ 5. Can do apply charge fee of NFT
-@ 6. Using MetaMask for use to basic interact with NFT contract
-  7. Api to manage Contract Creator, Contract Metadata, Transaction
+Node Js:
+   @ 1. Using Eth network components
+   @ 2. Can deploy new contract
+   @ 3. Can mint
+   @ 4. Can get metadata which on decentralized network through transaction
+   @ 5. Can do apply charge fee of NFT
+   @ 6. Using MetaMask for use to basic interact with NFT contract
+Java Spring Boot:
+     1. Call node js script
+     2. Api to manage Contract Creator, Contract Metadata, Transaction
 
-FE Update
-None
+FE Update:
+1. Login by MetaMask, Google, Facebook
+2. Listing interacted contract and transaction hash
+3. Mint interacted contract or new contract
+4. Create own contract
+5. Manage own contract transaction

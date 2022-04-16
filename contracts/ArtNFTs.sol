@@ -27,10 +27,10 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
     function mintNFTContract(string memory tokenURI) public payable returns (uint256) {
         //msg.sender : address of receiver who receives NFT and address of sender who sends nft fee to contract address
         if (isPublicToWhiteListed) {
-            require(isInWhiteListed(msg.sender), "Not In WhiteListed For PreSale");
+            require(isInWhiteListed(msg.sender), "Not In PreSale WhiteListed");
         }
         uint256 receiverTokenCount = balanceOf(msg.sender);
-        require(receiverTokenCount < nftPerAddressLimit, "Receiver reached limit(2) ArtNFTs");
+        require(receiverTokenCount < nftPerAddressLimit, "Receiver reached limit 2 ArtNFTs");
 
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
