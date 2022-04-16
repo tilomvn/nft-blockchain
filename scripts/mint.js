@@ -96,7 +96,30 @@ async function mintNFT() {
         console.log("Transaction Receipt: ", tranReceipt);
       }).catch((err) => {
         console.log("Failed Transaction Receipt: ", err.receipt);
-        process.exit(1);
+        axios({
+          method: "post",
+          url: API_URL,
+          data: {
+            jsonrpc: "2.0",
+            method: "trace_call",
+            params: [
+                {
+                    from: err.receipt.from,
+                    to: err.receipt.to
+                },
+                ["trace"], "latest"
+            ],
+            id: 1
+          }
+        })
+        .then((response) => {
+          console.log(response);
+          process.exit(1);
+        })
+        .catch((error) => { 
+          console.log("Get Failed Transaction Info Failed: ", error.response.data);
+          process.exit(1);
+        });
       });
     })
     .catch((err) => {
