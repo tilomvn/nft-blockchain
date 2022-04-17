@@ -20,8 +20,7 @@ Java Spring Boot:
      2. Api to manage Contract Creator, Contract Metadata, Transaction
 
 FE(Vue) Update:
-1. Login by MetaMask, Google, Facebook
-2. Listing interacted contract and transaction hash
+1. Login by MetaMask
+2. Listing interacted contract
 3. Mint interacted contract or new contract
-4. Create own contract
-5. Manage own contract transaction
+4. Manage own contract (CRUD)
