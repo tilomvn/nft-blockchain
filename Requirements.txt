@@ -19,7 +19,7 @@ Java Spring Boot:
      1. Call node js script
      2. Api to manage Contract Creator, Contract Metadata, Transaction
 
-FE Update:
+FE(Vue) Update:
 1. Login by MetaMask, Google, Facebook
 2. Listing interacted contract and transaction hash
 3. Mint interacted contract or new contract
