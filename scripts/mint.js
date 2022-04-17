@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const InputDataDecoder = require('ethereum-input-data-decoder');
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
 
 const API_URL = process.env.API_URL; //Alchemy App API
 
@@ -67,7 +67,7 @@ async function mintNFT() {
           if (!err) {
             console.log("The hash of our transaction is: ", hash, "\nCheck Alchemy's Mempool to view the status of our transaction!");
             axios({
-              method: 'post',
+              method: "post",
               url: API_URL,
               data: {
                 jsonrpc: "2.0",
@@ -104,8 +104,8 @@ async function mintNFT() {
             method: "trace_call",
             params: [
                 {
-                    from: err.receipt.from,
-                    to: err.receipt.to
+                  from: err.receipt.from,
+                  to: err.receipt.to
                 },
                 ["trace"], "latest"
             ],

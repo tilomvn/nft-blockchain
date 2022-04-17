@@ -2,7 +2,7 @@
 * @type import('hardhat/config').HardhatUserConfig
 */
 require('dotenv').config();
-require("@nomiclabs/hardhat-ethers");
+require('@nomiclabs/hardhat-ethers');
 
 const { API_URL, METAMASK_PRIVATE_KEY } = process.env;
 

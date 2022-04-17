@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
 
 const apiKey = process.env.API_KEY;
 
