@@ -19,8 +19,8 @@
 * Install Ether.js library that simplifies interacting with the Ethereum blockchain: npm i -D @nomiclabs/hardhat-ethers "ethers@^5.0.0"
 * Edit hardhat.config.js(see source in project)
 * Compile contracts: npx hardhat compile
-* Creat a deployment script deploy.js(see source in project) in your scripts directory
-* Deploy contracts: npx hardhat run scripts/deploy.js --network ropsten
+* Create a deployment script deploy.js(see source in project) in your scripts directory
+* Deploy contracts: npx hardhat run --network ropsten scripts/deploy.js 
 ## 4. Mint NFTs
 * Create place to store metadata: https://pinata.cloud/
 * Upload some metadata file and json file of metadata with sample format
