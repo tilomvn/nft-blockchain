@@ -10,7 +10,7 @@ const web3 = createAlchemyWeb3(
 
 async function getMetadata(contractAddress) {
     const metadata = await web3.alchemy.getTokenMetadata(contractAddress);
-    console.log("TOKEN METADATA->");
+    //console.log("TOKEN METADATA->");
     console.log(metadata);
 }
 

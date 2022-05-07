@@ -16,7 +16,7 @@ Node Js:
    @ 5. Can do apply charge fee of NFT
    @ 6. Using MetaMask for use to basic interact with NFT contract
 Java Spring Boot:
-     1. Call node js script, support FE
+   @ 1. Call node js script, support FE
      2. Api to manage Contract Creator, Contract Metadata, Transaction
 
 FE(Vue) Update:
