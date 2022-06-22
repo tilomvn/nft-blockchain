@@ -77,25 +77,24 @@ async function mintNFT() {
               }
             })
             .then((response) => {
-              console.log("Transaction Result:");
-              console.log(response.data.result);
+              console.log("Transaction Result:\n", response.data.result);
 
               console.log("Transaction Metadata:");
               const decoder = new InputDataDecoder(contract.abi);
               console.log(decoder.decodeData(response.data.result.input));
             })
             .catch((error) => { 
-              console.log("Get Transaction Info Failed: ", error);
+              console.log("Get Transaction Info Failed: \n", error);
             });
           } else {
-            console.log("Something went wrong when submitting our transaction:", err);
+            console.log("Something went wrong when submitting our transaction:\n", err);
           }
         }
       );
       signPromiseEvent.then((tranReceipt) => {
-        console.log("Transaction Receipt: ", tranReceipt);
+        console.log("Transaction Receipt:\n", tranReceipt);
       }).catch((err) => {
-        console.log("Failed Transaction Receipt: ", err.receipt);
+        console.log("Failed Transaction Receipt:\n", err.receipt);
         axios({
           method: "post",
           url: API_URL,
@@ -117,13 +116,13 @@ async function mintNFT() {
           process.exit(1);
         })
         .catch((error) => { 
-          console.log("Get Failed Transaction Info Failed: ", error.response.data);
+          console.log("Get Failed Transaction Info Failed:\n", error.response.data);
           process.exit(1);
         });
       });
     })
     .catch((err) => {
-      console.log("Promise failed:", err);
+      console.log("Promise failed:\n", err);
       process.exit(1);
     });
 }
