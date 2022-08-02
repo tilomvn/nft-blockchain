@@ -84,7 +84,7 @@ async function mintNFT() {
               console.log(decoder.decodeData(response.data.result.input));
             })
             .catch((error) => { 
-              console.log("Get Transaction Info Failed: \n", error);
+              console.log("Get Transaction Info Failed:\n", error);
             });
           } else {
             console.log("Something went wrong when submitting our transaction:\n", err);
