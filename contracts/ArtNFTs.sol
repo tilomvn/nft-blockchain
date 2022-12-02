@@ -39,11 +39,11 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
         return newItemId;
     }
 
-    function transferNFTContract(address sender, address receiver) public payable returns (uint256) {
-        uint256 tokenCount = balanceOf(sender);
+    function transferNFTContract(address receiver) public payable returns (uint256) {
+        uint256 tokenCount = balanceOf(msg.sender);
         require(tokenCount > 0, "Sender has no tokens to transfer");
         uint256 currentItemId = _tokenIds.current();
-        _transfer(sender, receiver, currentItemId);
+        _transfer(msg.sender, receiver, currentItemId);
         return currentItemId;
     }
 

@@ -45,13 +45,13 @@ async function transferNFT() {
   // transactions sent from our address and prevents replay attacks.
   const nonce = await alchemyWeb3.eth.getTransactionCount(sender, 'latest');
   const tx = {
-    from: receiver, // our MetaMask public key
+    from: sender, // our MetaMask public key
     to: contractAddress, // the smart contract address we want to interact with
     nonce: nonce, // nonce with the no of transactions from our account
     gas: gas, // fee estimate to complete the transaction
     value: nftFee, // amount to be transfered to contract address
     data: nftContract.methods
-      .transferNFTContract(sender, receiver)
+      .transferNFTContract(receiver)
       .encodeABI(), // call the mintNFTContract function from our NFT.sol file and pass the account that should receive the minted NFT.
   };
 
