@@ -14,7 +14,7 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
     uint256 public nftPerAddressLimit = 2;
     string public baseURI;
     bool public isPublicToWhiteListed = true;
-    address[] public whitelisted = [address(0x80D422366B4c9216e72C054036d59eDEf47E124E)];
+    address[] public whitelisted = [address(0x80D422366B4c9216e72C054036d59eDEf47E124E), address(0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3)];
 
     constructor(
       string memory _name,
@@ -37,6 +37,14 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
         _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
+    }
+
+    function transferNFTContract(address sender, address receiver) public payable returns (uint256) {
+        uint256 tokenCount = balanceOf(sender);
+        require(tokenCount > 0, "Sender has no tokens to transfer");
+        uint256 currentItemId = _tokenIds.current();
+        _transfer(sender, receiver, currentItemId);
+        return currentItemId;
     }
 
     function isInWhiteListed(address _user) private view returns (bool) {
