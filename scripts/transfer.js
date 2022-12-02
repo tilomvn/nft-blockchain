@@ -52,7 +52,7 @@ async function transferNFT() {
     value: nftFee, // amount to be transfered to contract address
     data: nftContract.methods
       .transferNFTContract(receiver)
-      .encodeABI(), // call the mintNFTContract function from our NFT.sol file and pass the account that should receive the minted NFT.
+      .encodeABI(), // call the transferNFTContract function from our NFT.sol file and pass the account that should receive the minted NFT.
   };
 
   const signPromise = alchemyWeb3.eth.accounts.signTransaction(
