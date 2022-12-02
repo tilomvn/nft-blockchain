@@ -8,10 +8,10 @@ const { API_URL, METAMASK_PRIVATE_KEY } = process.env;
 
 module.exports = {
    solidity: "0.8.0",
-   defaultNetwork: "ropsten",
+   defaultNetwork: "goerli",
    networks: {
       hardhat: {},
-      ropsten: {
+      goerli: {
          url: API_URL,
          accounts: [`0x${METAMASK_PRIVATE_KEY}`]
       }

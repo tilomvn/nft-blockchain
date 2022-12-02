@@ -14,7 +14,7 @@ contract ArtNFTs is ERC721URIStorage, Ownable {
     uint256 public nftPerAddressLimit = 2;
     string public baseURI;
     bool public isPublicToWhiteListed = true;
-    address[] public whitelisted = [address(0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3)];
+    address[] public whitelisted = [address(0x80D422366B4c9216e72C054036d59eDEf47E124E)];
 
     constructor(
       string memory _name,

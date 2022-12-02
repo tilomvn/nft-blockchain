@@ -6,7 +6,7 @@ async function main() {
   const RADX = await ethers.getContractFactory("ArtNFTs");
 
   // Start deployment, returning a promise that resolves to a contract object
-  const radx = await RADX.deploy("ArtNFTRadx2", "NFTRADX2", "http://radx2.sg/");
+  const radx = await RADX.deploy("ArtABC", "ABC", "http://radx.sg/");
   await radx.deployed();
 
   console.log("Contract deployed to address:", radx.address);
