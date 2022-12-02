@@ -44,4 +44,4 @@
 * For nftFee, set 0 if the contract does not support payable
 * Run Chrome without CORS: "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
-* nftaddress: 0xa7890dC815bfb784F48e871cfF9840BF08947548, 0x5baB5296b20d5600B7A31566eA9dD484825EFb85, 0x2690564D073737Cb3d26A24203241C38641c88fD, 0xC6D8A5a5Da36B59b690fE56e99Cf9D01618407AB
+* nftaddress: 0xC6D8A5a5Da36B59b690fE56e99Cf9D01618407AB
