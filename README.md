@@ -91,6 +91,9 @@ node scripts/transfer.js --contract=ArtNFTs --contractAddress=0xc385C6E31e7C4340
 ```JAVASCRIPT
 node scripts/transfer.js --contract=ArtNFTs --contractAddress=0xc385C6E31e7C4340aD5364a9ECbA63C4117c4e9c --sender=0x80D422366B4c9216e72C054036d59eDEf47E124E --senderKey=02343c7018f9a5446763e635efc6df7be6f8f6f7972441f9d76d7b0df30b8989 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --nftFee=100000000 --gas=1000000
 ```
+```JAVASCRIPT
+node scripts/read-transaction.js --contract=ArtNFTs --hash=0xad7c3df12eff5776edc9d7f7da4645f848da07ef179f86f0ac55a5d3e5f12bc3
+```
 * For nftFee, set 0 if the contract does not support payable
 * Run Chrome without CORS: "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
