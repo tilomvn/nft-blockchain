@@ -48,7 +48,7 @@ async function readTransaction() {
     // console.log(decoder.decodeData(response.data.result.input));
   })
   .catch((error) => { 
-    console.log("Get Transaction Info Failed:\n", error);
+    console.log("Get Transaction Info Failed:\n", error.response.data.error);
   });
 }
 
