@@ -93,6 +93,7 @@ async function mintNFT() {
       );
       signPromiseEvent.then((tranReceipt) => {
         console.log("Transaction Receipt:\n", tranReceipt);
+        console.log("Topics:\n", tranReceipt.logs[0].topics);
       }).catch((err) => {
         console.log("Failed Transaction Receipt:\n", err.receipt);
         axios({

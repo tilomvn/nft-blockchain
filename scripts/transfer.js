@@ -93,6 +93,7 @@ async function transferNFT() {
       );
       signPromiseEvent.then((tranReceipt) => {
         console.log("Transaction Receipt:\n", tranReceipt);
+        console.log("Topics:\n", tranReceipt.logs[0].topics, tranReceipt.logs[1].topics);
       }).catch((err) => {
         console.log("Failed Transaction Receipt:\n", err.receipt);
         axios({

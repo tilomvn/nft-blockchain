@@ -97,4 +97,15 @@ node scripts/read-transaction.js --contract=ArtNFTs --hash=0xad7c3df12eff5776edc
 * For nftFee, set 0 if the contract does not support payable
 * Run Chrome without CORS: "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
+## 6. How to listen to NFT Mints
+* Install Alchemy Admin SDK
+```JAVASCRIPT
+npm install alchemy-sdk
+```
+* Define your event log topic filters by following this article https://docs.alchemy.com/docs/how-to-listen-to-nft-mints
+* Run event listener script
+```JAVASCRIPT
+node scripts/mint-event-listener.js
+```
+
 * nftaddress: 0xc385C6E31e7C4340aD5364a9ECbA63C4117c4e9c
