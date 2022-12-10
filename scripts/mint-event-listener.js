@@ -19,7 +19,7 @@ const transferTopic = "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac
 const zeroTransferTopic = "0x00000000000000000000000080d422366b4c9216e72c054036d59edef47e124e";
 
 // This is the NFT contract we want to watch.
-const nftContractAddress = "0xc385c6e31e7c4340ad5364a9ecba63c4117c4e9c";
+const nftContractAddress = "0xFB63aD8F48a8dc2c8824D14B2ff47328A4c65A5a";
 
 // Create the log options object.
 const mintEvents = {
