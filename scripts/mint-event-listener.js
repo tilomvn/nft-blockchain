@@ -1,4 +1,5 @@
-const { Network, Alchemy } = require('alchemy-sdk');
+const { Network, Alchemy, AlchemySubscription } = require('alchemy-sdk');
+const { utils } = require('ethers');
 require('dotenv').config();
 
 const API_URL = process.env.API_URL; //Alchemy App API
@@ -32,4 +33,25 @@ const actionWithTxn = (txn) => console.log(txn);
 
 // Open the websocket and listen for events!
 console.log("Listening to events...");
+alchemy.ws.on("block", (blockNumber) =>
+  console.log("The latest block number is", blockNumber)
+);
+alchemy.ws.on(
+  {
+    method: AlchemySubscription.PENDING_TRANSACTIONS,
+    toAddress: "0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3",
+  },
+  (tx) => console.log(tx)
+);
 alchemy.ws.on(mintEvents, actionWithTxn);
+
+const filter = {
+  address: "0x80D422366B4c9216e72C054036d59eDEf47E124E",
+  topics: [
+    utils.id("Transfer(address,address,uint256)")
+  ]
+};
+alchemy.ws.on(filter, (log, event) => {
+  // Emitted whenever a DAI token transfer occurs
+  console.log(log);
+});
