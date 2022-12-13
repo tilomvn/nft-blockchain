@@ -38,7 +38,7 @@ async function transferDEFI() {
   const senderKey = args.senderKey;
   const receiver = args.receiver;
   const numTokens = args.numTokens;
-  const nftContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
+  const defiContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
   const defiFee = args.defiFee;
   const gas = args.gas;
 
@@ -51,7 +51,7 @@ async function transferDEFI() {
     nonce: nonce, // nonce with the no of transactions from our account
     gas: gas, // fee estimate to complete the transaction
     value: defiFee, // amount to be transfered to contract address
-    data: nftContract.methods
+    data: defiContract.methods
       .transferToken(receiver, numTokens)
       .encodeABI(), // call the transferToken function from our NFT.sol file and pass the account that should receive the minted NFT.
   };

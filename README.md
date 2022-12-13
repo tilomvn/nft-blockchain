@@ -116,3 +116,4 @@ node scripts/mint-event-listener.js
 ```
 
 * nftaddress: 0xFB63aD8F48a8dc2c8824D14B2ff47328A4c65A5a
+* defiaddress: 0xD0761a3E370fcec5Bd2bfA07468d510274E29aa9
