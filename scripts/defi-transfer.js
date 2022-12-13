@@ -28,7 +28,7 @@ function getArgs () {
   return args;
 }
 
-async function transferNFT() {
+async function transferDEFI() {
   const args = getArgs();
   
   const alchemyWeb3 = createAlchemyWeb3(API_URL);
@@ -128,4 +128,4 @@ async function transferNFT() {
     });
 }
 
-transferNFT();
+transferDEFI();
