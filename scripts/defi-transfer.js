@@ -39,7 +39,7 @@ async function transferNFT() {
   const receiver = args.receiver;
   const numTokens = args.numTokens;
   const nftContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
-  const nftFee = args.nftFee;
+  const defiFee = args.defiFee;
   const gas = args.gas;
 
   // get the nonce - nonce is needed for security reasons. It keeps track of the number of
@@ -50,7 +50,7 @@ async function transferNFT() {
     to: contractAddress, // the smart contract address we want to interact with
     nonce: nonce, // nonce with the no of transactions from our account
     gas: gas, // fee estimate to complete the transaction
-    value: nftFee, // amount to be transfered to contract address
+    value: defiFee, // amount to be transfered to contract address
     data: nftContract.methods
       .transferToken(receiver, numTokens)
       .encodeABI(), // call the transferToken function from our NFT.sol file and pass the account that should receive the minted NFT.

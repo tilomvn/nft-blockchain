@@ -92,10 +92,10 @@ node scripts/nft-transfer.js --contract=NFTs --contractAddress=0xFB63aD8F48a8dc2
 ```
 * Transfer DEFI:
 ```JAVASCRIPT
-node scripts/defi-transfer.js --contract=DEFIs --contractAddress=0xD0761a3E370fcec5Bd2bfA07468d510274E29aa9 --sender=0x80D422366B4c9216e72C054036d59eDEf47E124E --senderKey=02343c7018f9a5446763e635efc6df7be6f8f6f7972441f9d76d7b0df30b8989 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --numTokens=2 --nftFee=0 --gas=1000000
+node scripts/defi-transfer.js --contract=DEFIs --contractAddress=0xD0761a3E370fcec5Bd2bfA07468d510274E29aa9 --sender=0x80D422366B4c9216e72C054036d59eDEf47E124E --senderKey=02343c7018f9a5446763e635efc6df7be6f8f6f7972441f9d76d7b0df30b8989 --receiver=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --numTokens=2 --defiFee=0 --gas=1000000
 ```
 ```JAVASCRIPT
-node scripts/defi-transfer.js --contract=DEFIs --contractAddress=0xD0761a3E370fcec5Bd2bfA07468d510274E29aa9 --sender=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --senderKey=2f3bfcc7d0b936159c373d642d947926363030e6c500285c593bb01bd002191c --receiver=0x80D422366B4c9216e72C054036d59eDEf47E124E --numTokens=5 --nftFee=0 --gas=1000000
+node scripts/defi-transfer.js --contract=DEFIs --contractAddress=0xD0761a3E370fcec5Bd2bfA07468d510274E29aa9 --sender=0x4D1B5CB23975f0bA70b9D42135e11789075f1aD3 --senderKey=2f3bfcc7d0b936159c373d642d947926363030e6c500285c593bb01bd002191c --receiver=0x80D422366B4c9216e72C054036d59eDEf47E124E --numTokens=5 --defiFee=0 --gas=1000000
 ```
 * Read Transaction Info:
 ```JAVASCRIPT
